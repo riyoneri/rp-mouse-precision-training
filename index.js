@@ -44,9 +44,22 @@ allLines.filter((line, i) => {
 let totalDistances = [];
 let sortedarr = [];
 
-for (let i = 0; i < testCases; i++) {
-    const targettedSquaresIndex = allTargetedSquares[i].map((square, index) => [...square, index])
 
-    sortedarr = allTargetedSquares[i].sort((a, b) => +a[0] - +b[0])
-    console.log(targettedSquaresIndex)
+let firstDistance;
+let secondDistance;
+let remainingTargetedSquares;
+
+let targetedSquareLimit;
+
+for (let i = 0; i < testCases; i++) {
+    remainingTargetedSquares = allTargetedSquares[i].length
+    targetedSquareLimit = +twoNumberedLines[i][2]
+
+    let j = 0;
+    while (j < targetedSquareLimit) {
+        console.log(allTargetedSquares[i][j])
+
+        j++;
+    }
+    // console.log(targetedSquareLimit)
 }
