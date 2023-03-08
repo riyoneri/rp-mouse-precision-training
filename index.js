@@ -18,17 +18,35 @@ let firstTargettedSquares = allLines.filter((line, i) => {
     }
 })
 
-let targetedSquares = allLines.filter((line, i) => {
+let allTargetedSquares = []
+let subSquares = [];
+
+let positionCounter = 0;
+
+allLines.filter((line, i) => {
     if ((allLines[i].length === 5 && allLines[i - 1].length === 5) || (allLines[i].length === 5 && allLines[i + 1].length === 3)) {
-        return line
+        if ((allLines[i].length === 5 && allLines[i - 1].length === 5 && !(!allLines[i + 1] || allLines[i + 1].length === 3))) {
+            subSquares.push(allLines[i])
+        }
+
+        if ((allLines[i].length === 5 && (!allLines[i + 1] || allLines[i + 1].length === 3))) {
+            subSquares.push(allLines[i])
+            allTargetedSquares.push(subSquares)
+
+            allTargetedSquares[positionCounter].unshift(firstTargettedSquares[positionCounter])
+
+            positionCounter += 1;
+            subSquares = []
+        }
     }
 })
 
+let totalDistances = [];
+let sortedarr = [];
 
 for (let i = 0; i < testCases; i++) {
+    const targettedSquaresIndex = allTargetedSquares[i].map((square, index) => [...square, index])
 
-    // console.log(twoNumberedLines[i])
-    for (let j = 1; j <= +twoNumberedLines[i].split(" ")[1]; j++) {
-        console.log(+twoNumberedLines[i].split(" ")[1])
-    }
+    sortedarr = allTargetedSquares[i].sort((a, b) => +a[0] - +b[0])
+    console.log(targettedSquaresIndex)
 }
