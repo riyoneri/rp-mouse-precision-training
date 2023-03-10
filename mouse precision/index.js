@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const allLines = fs.readFileSync('file.txt', 'utf-8').split(/\r?\n/)
+const allLines = fs.readFileSync('./file.txt', 'utf-8').split(/\r?\n/)
 
 let lineCounter = 0;
 
